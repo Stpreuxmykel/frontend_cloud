@@ -1,0 +1,10 @@
+# GOOGLE_CLIENT_ID=510516255175-q4rdlmjjl7gnuve9tk2o0gpkt54tjq0d.apps.googleusercontent.com
+# GOOGLE_CLIENT_SECRET=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
+# NEXTAUTH_SECRET="NEXTAUTH_SECRET"
+# NEXTAUTH_URL=http://localhost:3000
+
+
+# NEXT_PUBLIC_BACKEND_API_URL="http://localhost:8000/api"
+
+
+
