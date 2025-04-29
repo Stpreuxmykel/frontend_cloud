@@ -306,7 +306,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ properties, className }) =>
                     ):(
                       <span onClick={() =>
                         redirect(property?.id, property?.property_id, property?.user)
-                      } className="text-green-500 font-bold text-sm flex items-center bg-green-100/10 hover:bg-green-100/20 py-1 px-2 rounded-lg transition-all">
+                      } className="cursor-pointer text-green-500 font-bold text-sm flex items-center bg-green-100/10 hover:bg-green-100/20 py-1 px-2 rounded-lg transition-all">
                       <MdOutlinePriceCheck className="mx-2" size={24} />
                       Contact
                     </span>
