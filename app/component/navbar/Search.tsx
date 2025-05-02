@@ -200,103 +200,119 @@ const Search = () => {
               besoins.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4 py-4">
-            <div className="grid grid-cols-1 items-center gap-4">
-              <div>
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-semibold mb-2"
-                >
-                  Pays
-                </label>
-                <Select
-                  value={selectedCountry}
-                  onValueChange={handleCountryChange}
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Choisir le pays" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {countries.map((country) => (
-                      <SelectItem key={country.id} value={country.name}>
-                        {country.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
 
-              <div>
-                {states.length > 0 && (
-                  <Select
-                    value={selectedState}
-                    onValueChange={handleStateChange}
-                  >
-                    <SelectTrigger className="w-full mt-4">
-                      <SelectValue placeholder="Choisir le departement" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {states.map((state) => (
-                        <SelectItem key={state.id} value={state.name}>
-                          {state.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                )}
-              </div>
+            <div className="grid gap-4 py-4">
+      <div className="grid grid-cols-1 items-center gap-4">
+        {/* Country Field */}
+        <div>
+          <label htmlFor="country" className="block text-sm font-semibold mb-2">
+            Pays
+          </label>
+          <input
+            type="text"
+            placeholder="Tapez le pays"
+            className="w-full px-3 py-2 border rounded-md mb-2"
+            value={selectedCountry}
+            onChange={(e) => handleCountryChange(e.target.value)}
+          />
+          <Select value={selectedCountry} onValueChange={handleCountryChange}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Choisir le pays" />
+            </SelectTrigger>
+            <SelectContent>
+              {countries.map((country) => (
+                <SelectItem key={country.id} value={country.name}>
+                  {country.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
-              {/* City Field */}
-              <div>
-                {cities.length > 0 && (
-                  <Select value={selectedCity} onValueChange={setSelectedCity}>
-                    <SelectTrigger className="w-full mt-4">
-                      <SelectValue placeholder="Choisir la ville" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {cities.map((city) => (
-                        <SelectItem key={city.id} value={city.name}>
-                          {city.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="type"
-                  className="block text-sm font-semibold mb-2"
-                >
-                  Type
-                </label>
-                <Select
-                  id="type"
-                  value={propertyType}
-                  onValueChange={(value) => setPropertyType(value)}
-                  className="w-full"
-                >
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Choisir le type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Maison">Maison</SelectItem>
-                    <SelectItem value="Appartement">Appartement</SelectItem>
-                    <SelectItem value="Building">Building</SelectItem>
-                    <SelectItem value="Espace Publicitaire">
-                      Espace Publicitaire
+        {/* State Field */}
+        <div>
+          {states.length > 0 && (
+            <>
+              <input
+                type="text"
+                placeholder="Tapez le département"
+                className="w-full px-3 py-2 border rounded-md mt-4 mb-2"
+                value={selectedState}
+                onChange={(e) => handleStateChange(e.target.value)}
+              />
+              <Select value={selectedState} onValueChange={handleStateChange}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Choisir le departement" />
+                </SelectTrigger>
+                <SelectContent>
+                  {states.map((state) => (
+                    <SelectItem key={state.id} value={state.name}>
+                      {state.name}
                     </SelectItem>
-                    <SelectItem value="Hotel">Hotel</SelectItem>
-                    <SelectItem value="Terrain">Terrain</SelectItem>
-                    <SelectItem value="Site Touristique">
-                      Site Touristique
+                  ))}
+                </SelectContent>
+              </Select>
+            </>
+          )}
+        </div>
+
+        {/* City Field */}
+        <div>
+          {cities.length > 0 && (
+            <>
+              <input
+                type="text"
+                placeholder="Tapez la ville"
+                className="w-full px-3 py-2 border rounded-md mt-4 mb-2"
+                value={selectedCity}
+                onChange={(e) => setSelectedCity(e.target.value)}
+              />
+              <Select value={selectedCity} onValueChange={setSelectedCity}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Choisir la ville" />
+                </SelectTrigger>
+                <SelectContent>
+                  {cities.map((city) => (
+                    <SelectItem key={city.id} value={city.name}>
+                      {city.name}
                     </SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-          </div>
+                  ))}
+                </SelectContent>
+              </Select>
+            </>
+          )}
+        </div>
+
+        {/* Property Type Field */}
+        <div>
+          <label htmlFor="type" className="block text-sm font-semibold mb-2">
+            Type
+          </label>
+          <Select
+            id="type"
+            value={propertyType}
+            onValueChange={(value) => setPropertyType(value)}
+            className="w-full"
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Choisir le type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Maison">Maison</SelectItem>
+              <SelectItem value="Appartement">Appartement</SelectItem>
+              <SelectItem value="Building">Building</SelectItem>
+              <SelectItem value="Espace Publicitaire">
+                Espace Publicitaire
+              </SelectItem>
+              <SelectItem value="Hotel">Hotel</SelectItem>
+              <SelectItem value="Terrain">Terrain</SelectItem>
+              <SelectItem value="Site Touristique">Site Touristique</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+    </div>
+       
           <DialogFooter>
             <Button type="button" variant="secondary" onClick={closeModal}>
               Annuler
